@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-base: #eff1f5;
+    --color-text: #4c4f69;
+    --color-blue: #1e66f5;
+  }
+
+  .dark {
+    --color-base: #1e1e2e;
+    --color-text: #cdd6f4;
+    --color-blue: #89b4fa;
+  }
+
+  body {
+    @apply bg-latte-base text-latte-text dark:bg-mocha-base dark:text-mocha-text;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Screen reader only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Focus visible improvements */
+  *:focus-visible {
+    outline: 2px solid #1e66f5;
+    outline-offset: 2px;
+  }
+
+  .dark *:focus-visible {
+    outline: 2px solid #89b4fa;
+  }
+
+  /* Improve heading contrast in dark mode */
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #cdd6f4;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-latte-blue text-white px-6 py-3 rounded-lg font-semibold
+           hover:opacity-90 transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-latte-blue focus:ring-offset-2
+           dark:bg-mocha-blue dark:focus:ring-mocha-blue dark:focus:ring-offset-mocha-base;
+  }
+
+  .btn-secondary {
+    @apply bg-latte-surface0 text-latte-text px-6 py-3 rounded-lg font-semibold
+           hover:bg-latte-surface1 transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-latte-surface2 focus:ring-offset-2
+           dark:bg-mocha-surface0 dark:text-mocha-text dark:hover:bg-mocha-surface1
+           dark:focus:ring-mocha-surface2 dark:focus:ring-offset-mocha-base;
+  }
+
+  .btn-danger {
+    @apply bg-latte-red text-white px-6 py-3 rounded-lg font-semibold
+           hover:opacity-90 transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-latte-red focus:ring-offset-2
+           dark:bg-mocha-red dark:focus:ring-mocha-red dark:focus:ring-offset-mocha-base;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border-2 border-latte-surface0 rounded-lg
+           bg-latte-mantle text-latte-text
+           focus:outline-none focus:border-latte-blue focus:ring-2 focus:ring-latte-blue/20
+           transition-colors duration-200
+           dark:bg-mocha-mantle dark:text-mocha-text dark:border-mocha-surface0
+           dark:focus:border-mocha-blue dark:focus:ring-mocha-blue/20;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md p-6 border border-latte-surface0
+           dark:bg-mocha-surface0 dark:border-mocha-blue/20 dark:shadow-lg dark:shadow-mocha-crust/50;
+  }
+
+  .label-text {
+    @apply block text-sm font-semibold text-latte-subtext1 mb-2
+           dark:text-mocha-text;
+  }
+}
+
+@layer utilities {
+  /* Enhanced card styles for dashboard */
+  .feature-card {
+    @apply bg-latte-surface0 rounded-xl p-6 border border-latte-surface1
+           transition-all duration-200 hover:shadow-lg hover:border-latte-blue/30
+           dark:bg-mocha-surface0 dark:border-mocha-surface2
+           dark:hover:shadow-xl dark:hover:shadow-mocha-blue/10 dark:hover:border-mocha-blue/40;
+  }
+
+  /* Improved text contrast utilities */
+  .text-primary {
+    @apply text-latte-text dark:text-mocha-text;
+  }
+
+  .text-secondary {
+    @apply text-latte-subtext0 dark:text-mocha-subtext0;
+  }
+
+  .text-muted {
+    @apply text-latte-subtext1 dark:text-mocha-subtext1;
+  }
+
+  /* Better background utilities */
+  .bg-elevated {
+    @apply bg-white dark:bg-mocha-mantle;
+  }
+
+  .bg-surface {
+    @apply bg-latte-mantle dark:bg-mocha-surface0;
+  }
+}
