@@ -12,7 +12,9 @@ vi.mock('../services/api', () => ({
     getResources: vi.fn(),
   },
   bookmarkAPI: {
+    getBookmarks: vi.fn(),
     addBookmark: vi.fn(),
+    removeBookmark: vi.fn(),
   },
 }));
 
@@ -22,6 +24,7 @@ global.alert = vi.fn();
 describe('Resources Page - Search and Bookmark Tests', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    api.bookmarkAPI.getBookmarks.mockResolvedValue({ data: { bookmarks: [] } });
   });
 
   describe('Page Rendering', () => {
@@ -232,7 +235,7 @@ describe('Resources Page - Search and Bookmark Tests', () => {
         data: { resources: mockEligibleResources }
       });
       api.bookmarkAPI.addBookmark.mockResolvedValue({
-        data: { message: 'Bookmark added successfully', id: 'bookmark-123' }
+        data: { message: 'Bookmark added successfully', bookmark: { id: 'bookmark-123' } }
       });
       const user = userEvent.setup();
 
@@ -338,7 +341,7 @@ describe('Resources Page - Search and Bookmark Tests', () => {
         data: { resources: mockResources }
       });
       api.bookmarkAPI.addBookmark.mockResolvedValue({
-        data: { message: 'Bookmark added successfully' }
+        data: { message: 'Bookmark added successfully', bookmark: { id: 'bookmark-123' } }
       });
       const user = userEvent.setup();
 

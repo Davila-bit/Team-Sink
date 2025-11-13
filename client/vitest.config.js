@@ -19,6 +19,10 @@ export default defineConfig({
         '**/dist/**',
       ],
     },
+    deps: {
+      // Inline ESM packages so Vitest transpiles them for Node test runtime
+      inline: ['react-router', 'react-router-dom'],
+    },
   },
   resolve: {
     alias: {

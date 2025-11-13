@@ -25,7 +25,7 @@ describe('Bookmarks Page Tests', () => {
   describe('Page Rendering', () => {
     it('should render bookmarks page heading', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
 
       render(<Bookmarks />);
@@ -40,7 +40,7 @@ describe('Bookmarks Page Tests', () => {
 
     it('should display loading state initially', () => {
       api.bookmarkAPI.getBookmarks.mockImplementation(
-        () => new Promise(resolve => setTimeout(() => resolve({ data: [] }), 100))
+        () => new Promise(resolve => setTimeout(() => resolve({ data: { bookmarks: [] } }), 100))
       );
 
       render(<Bookmarks />);
@@ -52,7 +52,7 @@ describe('Bookmarks Page Tests', () => {
   describe('Display Bookmarked Resources', () => {
     it('should display all bookmarked resources', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
 
       render(<Bookmarks />);
@@ -65,7 +65,7 @@ describe('Bookmarks Page Tests', () => {
 
     it('should display resource details for each bookmark', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
 
       render(<Bookmarks />);
@@ -79,7 +79,7 @@ describe('Bookmarks Page Tests', () => {
 
     it('should display resource type badges', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
 
       render(<Bookmarks />);
@@ -92,7 +92,7 @@ describe('Bookmarks Page Tests', () => {
 
     it('should have View Details button for each bookmark', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
 
       render(<Bookmarks />);
@@ -105,7 +105,7 @@ describe('Bookmarks Page Tests', () => {
 
     it('should link to correct resource detail page', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
 
       render(<Bookmarks />);
@@ -120,7 +120,7 @@ describe('Bookmarks Page Tests', () => {
   describe('Remove Bookmark Functionality', () => {
     it('should allow user to remove a bookmark', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
       api.bookmarkAPI.removeBookmark.mockResolvedValue({
         data: { message: 'Bookmark removed successfully' }
@@ -144,7 +144,7 @@ describe('Bookmarks Page Tests', () => {
 
     it('should remove bookmark from list after successful deletion', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
       api.bookmarkAPI.removeBookmark.mockResolvedValue({
         data: { message: 'Bookmark removed successfully' }
@@ -169,7 +169,7 @@ describe('Bookmarks Page Tests', () => {
 
     it('should handle remove bookmark errors gracefully', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
       api.bookmarkAPI.removeBookmark.mockRejectedValue(new Error('Network error'));
       const user = userEvent.setup();
@@ -195,7 +195,7 @@ describe('Bookmarks Page Tests', () => {
   describe('Empty State', () => {
     it('should show empty state when no bookmarks exist', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockEmptyBookmarks
+        data: { bookmarks: mockEmptyBookmarks }
       });
 
       render(<Bookmarks />);
@@ -207,7 +207,7 @@ describe('Bookmarks Page Tests', () => {
 
     it('should have link to browse resources when empty', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockEmptyBookmarks
+        data: { bookmarks: mockEmptyBookmarks }
       });
 
       render(<Bookmarks />);
@@ -221,7 +221,7 @@ describe('Bookmarks Page Tests', () => {
     it('should show empty state after removing all bookmarks', async () => {
       const singleBookmark = [mockBookmarks[0]];
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: singleBookmark
+        data: { bookmarks: singleBookmark }
       });
       api.bookmarkAPI.removeBookmark.mockResolvedValue({
         data: { message: 'Bookmark removed successfully' }
@@ -273,7 +273,7 @@ describe('Bookmarks Page Tests', () => {
     it('should retry loading bookmarks when retry button is clicked', async () => {
       api.bookmarkAPI.getBookmarks
         .mockRejectedValueOnce(new Error('Network error'))
-        .mockResolvedValueOnce({ data: mockBookmarks });
+        .mockResolvedValueOnce({ data: { bookmarks: mockBookmarks } });
       const user = userEvent.setup();
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
@@ -297,7 +297,7 @@ describe('Bookmarks Page Tests', () => {
   describe('Complete User Flow: View and Manage Bookmarks', () => {
     it('should complete full flow: view bookmarks → remove bookmark → see updated list', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
       api.bookmarkAPI.removeBookmark.mockResolvedValue({
         data: { message: 'Bookmark removed successfully' }
@@ -334,7 +334,7 @@ describe('Bookmarks Page Tests', () => {
   describe('UI Consistency', () => {
     it('should have same card styling as Resources page', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
 
       render(<Bookmarks />);
@@ -347,7 +347,7 @@ describe('Bookmarks Page Tests', () => {
 
     it('should display action buttons in consistent layout', async () => {
       api.bookmarkAPI.getBookmarks.mockResolvedValue({
-        data: mockBookmarks
+        data: { bookmarks: mockBookmarks }
       });
 
       render(<Bookmarks />);
