@@ -9,7 +9,7 @@ A web application that helps low-income families (ALICE population) find and acc
 - Diana Avila
 - Sangit Gaire
 - Kobe Leverett
-- Puru Sahuja
+- Puru Saluja
 
 ## Overview
 
