@@ -15,6 +15,10 @@ A web application that helps low-income families (ALICE population) find and acc
 
 Relief Net addresses the challenge faced by families earning just above the poverty line who struggle to find resources they qualify for. The application uses demographic profiling to automatically filter and display only eligible community resources.
 
+## Product Preview
+
+![Relief Net front page](docs/frontpage.png)
+
 ### Core Features
 
 - Eligibility-based resource filtering (income, household size, location, student/disability status)
