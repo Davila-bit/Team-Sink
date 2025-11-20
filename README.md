@@ -178,6 +178,23 @@ cd client && pnpm dev
 
 Access the application at http://localhost:5173
 
+### Run with Docker (Frontend + Backend)
+
+Prerequisites: Docker + Docker Compose.
+
+1. Build and start both services:
+   ```bash
+   docker compose up --build
+   ```
+   - Client: http://localhost:4173
+   - API: http://localhost:5000
+
+2. To stop containers:
+   ```bash
+   docker compose down
+   ```
+Re-run with `--build` whenever you change environment variables so the frontend picks up new values. Leave `VITE_API_URL` at the default `http://localhost:5000` (or update the port mapping if you change it).
+
 ## API Endpoints
 
 All endpoints are prefixed with `/api`.

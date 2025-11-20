@@ -49,4 +49,4 @@
   - CI for lint/test/build and lint/format configs.
   - Scripted deployment (Firebase hosting/functions or alternative) with staging/prod envs.
   - Remove Vite scaffold leftovers and unify JS/TS entrypoints.
-  - Containerize using Docker/Kubernetes
+  - Containerize using Docker/Kubernetes [✅]

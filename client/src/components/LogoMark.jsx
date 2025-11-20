@@ -1,0 +1,55 @@
+const LogoMark = ({ className = '', title = 'Relief Net' }) => (
+  <svg
+    className={className}
+    viewBox="0 0 64 64"
+    role="img"
+    aria-label={title}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="logo-bg" x1="12" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#6ad0ff" />
+        <stop offset="1" stopColor="#55e2c4" />
+      </linearGradient>
+      <linearGradient id="logo-glow" x1="18" y1="14" x2="46" y2="50" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#ffffff" stopOpacity=".28" />
+        <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+    <rect width="64" height="64" rx="16" fill="url(#logo-bg)" />
+    <path
+      fill="url(#logo-glow)"
+      d="M20 12h24a8 8 0 0 1 8 8v24c0 2.2-1.8 4-4 4H16a4 4 0 0 1-4-4V20a8 8 0 0 1 8-8Z"
+    />
+    <path
+      fill="#f7fbff"
+      d="M32 19c-5.1 0-9.2 4.1-9.2 9.2 0 7.9 8.9 14.9 9.2 15.1.3-.2 9.2-7.2 9.2-15.1 0-5.1-4.1-9.2-9.2-9.2Zm0 13.7a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Z"
+    />
+    <path
+      fill="none"
+      stroke="#e6f8ff"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M19 36c0 7.5 6.7 14 13 14s13-5.3 13-13.5c0-.9-.1-1.8-.3-2.7"
+    />
+    <path
+      fill="none"
+      stroke="#f7fbff"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M43.5 30a7.5 7.5 0 0 1 1.7-4.7"
+    />
+    <path
+      fill="none"
+      stroke="#f7fbff"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M17.5 32.5c1.8-4.7 5.8-8.4 11-10"
+    />
+  </svg>
+);
+
+export default LogoMark;
