@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { profileAPI } from '../services/api';
 
 const Profile = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
@@ -47,6 +49,10 @@ const Profile = () => {
     try {
       await profileAPI.updateProfile(formData);
       setSuccess('Profile updated successfully!');
+      // Redirect to resources page after a brief delay to show success message
+      setTimeout(() => {
+        navigate('/resources?fromProfile=true');
+      }, 1000);
     } catch (err) {
       setError('Failed to update profile');
       console.error(err);

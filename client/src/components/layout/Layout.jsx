@@ -59,7 +59,7 @@ const Layout = ({ children }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-latte-base dark:bg-mocha-base">
+    <div className="min-h-screen bg-latte-base dark:bg-mocha-base flex flex-col">
       <SkipLink />
       {/* Navigation */}
       <nav className="bg-white dark:bg-mocha-mantle border-b border-latte-surface0 dark:border-mocha-surface0 sticky top-0 z-50" role="navigation" aria-label="Main navigation">
@@ -159,7 +159,7 @@ const Layout = ({ children }) => {
       </nav>
 
       {/* Main Content */}
-      <main id="main-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" role="main">
+      <main id="main-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow" role="main">
         {children}
       </main>
 

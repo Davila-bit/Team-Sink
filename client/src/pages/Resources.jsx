@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { resourceAPI, bookmarkAPI } from '../services/api';
 import { MagnifyingGlassIcon, BookmarkIcon as BookmarkIconOutline } from '@heroicons/react/24/outline';
 import { BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/24/solid';
 
 const Resources = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('');
@@ -12,6 +13,24 @@ const Resources = () => {
   const [showAll, setShowAll] = useState(false);
   const [bookmarkedResourceIds, setBookmarkedResourceIds] = useState(new Set());
   const [bookmarkMap, setBookmarkMap] = useState({});
+  const [fromProfile, setFromProfile] = useState(false);
+
+  // Check if coming from profile update
+  useEffect(() => {
+    const fromProfileParam = searchParams.get('fromProfile');
+    if (fromProfileParam === 'true') {
+      setFromProfile(true);
+      // Ensure we show filtered results (eligible resources) when coming from profile
+      setShowAll(false);
+      // Clean up the URL parameter after reading it
+      setSearchParams({}, { replace: true });
+      // Auto-dismiss success message after 5 seconds
+      const timer = setTimeout(() => {
+        setFromProfile(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => {
     loadResources();
@@ -97,6 +116,17 @@ const Resources = () => {
   return (
     <div>
       <h1 className="text-3xl font-bold text-latte-text dark:text-mocha-text mb-8">Find Resources</h1>
+
+      {/* Success message when coming from profile update */}
+      {fromProfile && (
+        <div
+          className="bg-latte-green/10 dark:bg-mocha-green/20 border border-latte-green dark:border-mocha-green text-latte-green dark:text-mocha-green px-4 py-3 rounded-lg mb-6"
+          role="status"
+          aria-live="polite"
+        >
+          <p className="font-medium">Profile updated! Here are resources tailored to your profile.</p>
+        </div>
+      )}
 
       {/* Search and Filter */}
       <section className="card mb-6" aria-label="Search and filter resources">

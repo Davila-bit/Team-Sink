@@ -81,14 +81,8 @@ const Home = () => {
           </div>
 
           <div className="mt-12 text-center space-y-6">
-            <div className="mx-auto flex flex-col items-center gap-4 w-fit">
-              <LogoMark className="h-16 w-16 rounded-2xl shadow-lg backdrop-blur bg-white/20 p-1.5" />
-              <span className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-white/25 text-white backdrop-blur-sm drop-shadow-sm">
-                Built for ALICE families
-              </span>
-            </div>
             <h1 className="text-5xl md:text-6xl font-bold leading-tight text-white drop-shadow-[0_12px_40px_rgba(0,0,0,0.6)] tracking-tight">
-              Find verified help without the guesswork
+              Find help free of cost.
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto drop-shadow-[0_10px_28px_rgba(0,0,0,0.5)]">
               Relief Net matches your household to housing, food, healthcare, and education resources you&apos;re eligible for so you can get help faster.
